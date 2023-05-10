@@ -35,9 +35,4 @@ public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TReque
 
         return await next();
     }
-
-    public Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
-    {
-        throw new NotImplementedException();
-    }
 }

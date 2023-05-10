@@ -61,8 +61,11 @@ public static partial class ProjectPolicys
     public class IdentityModule
     {
         public const string GetClaims = nameof(IdentityModule) + "_" + nameof(GetClaims);
-        public const string GeetAllRoles = nameof(IdentityModule) + "_" + nameof(GeetAllRoles);
+        public const string DeleteRole = nameof(IdentityModule) + "_" + nameof(DeleteRole);
+        public const string GetAllRoles = nameof(IdentityModule) + "_" + nameof(GetAllRoles);
         public const string Registration = nameof(IdentityModule) + "_" + nameof(Registration);
+        public const string EditUserName = nameof(IdentityModule) + "_" + nameof(EditUserName);
+        public const string AddRoleToUser = nameof(IdentityModule) + "_" + nameof(AddRoleToUser);
         public const string ChangePassword = nameof(IdentityModule) + "_" + nameof(ChangePassword);
         public const string AddRoleWithClaims = nameof(IdentityModule) + "_" + nameof(AddRoleWithClaims);
         public const string DeleteRoleFromUser = nameof(IdentityModule) + "_" + nameof(DeleteRoleFromUser);

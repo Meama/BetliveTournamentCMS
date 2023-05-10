@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Authorization;
 using Application.Identity.Commands.AddUser;
 using Application.Identity.Commands.AddClaims;
 using Application.Identity.Commands.DeleteRole;
+using Application.Identity.Commands.EditUserName;
+using Application.Identity.Commands.AddRoleToUser;
 using Application.Identity.Commands.ChangePassword;
 using Application.Identity.Queries.GetAllRolesWithClames;
 using Application.Identity.Commands.ChangePassword.UnAuthorized;
@@ -46,9 +48,9 @@ public class IdentityController : BaseController
         return Ok(policies);
     }
 
-    [HttpGet(nameof(GeetAllRoles))]
-    [Authorize(Policy = ProjectPolicys.IdentityModule.GeetAllRoles)]
-    public async Task<IActionResult> GeetAllRoles()
+    [HttpGet(nameof(GetAllRoles))]
+    [Authorize(Policy = ProjectPolicys.IdentityModule.GetAllRoles)]
+    public async Task<IActionResult> GetAllRoles()
     {
         var roles = await _mediator.Send(new GetAllRolesWithClamesQuery());
 
@@ -63,7 +65,7 @@ public class IdentityController : BaseController
     }
 
     [HttpPost(nameof(DeleteRoleFromUser))]
-    //[Authorize(Policy = ProjectPolicys.IdentityModule.DeleteRoleFromUser)]
+    [Authorize(Policy = ProjectPolicys.IdentityModule.DeleteRoleFromUser)]
     public async Task DeleteRoleFromUser(DeleteRoleFromUserCommand command)
     {
         await _mediator.Send(command);
@@ -78,6 +80,27 @@ public class IdentityController : BaseController
 
     [HttpPost(nameof(ChangePasswordWithMail))]
     public async Task ChangePasswordWithMail(ChangePasswordForUnAuthorizedUserCommand command)
+    {
+        await _mediator.Send(command);
+    }
+
+    [HttpPost(nameof(DeleteRole))]
+    [Authorize(Policy = ProjectPolicys.IdentityModule.DeleteRole)]
+    public async Task DeleteRole(DeleteRoleCommand command)
+    {
+        await _mediator.Send(command);
+    }
+
+    [HttpPost(nameof(EditUserName))]
+    [Authorize(Policy = ProjectPolicys.IdentityModule.EditUserName)]
+    public async Task EditUserName(EditUserNameCommand command)
+    {
+        await _mediator.Send(command);
+    }
+
+    [HttpPost(nameof(AddRoleToUser))]
+    [Authorize(Policy = ProjectPolicys.IdentityModule.AddRoleToUser)]
+    public async Task AddRoleToUser(AddRoleToUserCommand command)
     {
         await _mediator.Send(command);
     }

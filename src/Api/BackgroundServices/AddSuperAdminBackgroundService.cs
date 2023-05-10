@@ -31,6 +31,8 @@ public class AddSuperAdminBackgroundService : BackgroundService
             await mediator.Send(new AddUserCommand
             {
                 Email = "admin@admin.com",
+                FirstName = "Nika",
+                LastName = "Mamniashvili",
                 Password = "ae7b55c81Sli)(vI",
                 Roles = new List<string> { rolename },
             }, cancellationToken);

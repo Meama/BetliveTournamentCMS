@@ -1,6 +1,6 @@
-﻿using Application.Exeption.CustomeExeption;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Application.Exeption.CustomeExeption;
 
 namespace Application.Identity.Commands.AddUser;
 
@@ -17,9 +17,10 @@ public class AddUserCommandHandler : IRequestHandler<AddUserCommand>
     {
         var user = new IdentityUser
         {
-            UserName = request.Email,
-            Email = request.Email
+            UserName = $"{request.FirstName}-{request.LastName}",
+            Email = request.Email,
         };
+
         var result = await _userManager.CreateAsync(user, request.Password);
 
         if (!result.Succeeded)
