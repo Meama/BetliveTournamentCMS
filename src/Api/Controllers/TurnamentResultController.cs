@@ -6,6 +6,9 @@ using Application.CSV.Commands.UploadCsv;
 using Application.TurnamentResult.Commands.AddTurnamentResult;
 using Application.TurnamentResult.Commands.EditTurnamentResult;
 using Application.TurnamentResult.Queries.GetAllTurnamentResult;
+using Application.TurnamentResult.Commands.DeleteAllTurnamentResult;
+using Application.TurnamentResult.Commands.DeleteTurnamentResult;
+using Application.TurnamentResult.Commands.AddListTurnamentResult;
 
 namespace Api.Controllers;
 
@@ -43,6 +46,33 @@ public class TurnamentResultController : BaseController
     public async Task<IActionResult> GetAll([FromQuery] GetAllTurnamentResultQuery query, CancellationToken cancellationToken)
     {
         var result = await _mediator.Send(query, cancellationToken);
+
+        return Ok(result);
+    }
+
+    [HttpGet(nameof(DeleteAll))]
+    [Authorize(Policy = ProjectPolicys.TurnamentResultModule.DeleteAll)]
+    public async Task<IActionResult> DeleteAll(CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(new DeleteAllTurnamentResultCommand(), cancellationToken);
+
+        return Ok(result);
+    }
+
+    [HttpPost(nameof(DeleteTurnamentById))]
+    [Authorize(Policy = ProjectPolicys.TurnamentResultModule.DeleteTurnamentById)]
+    public async Task<IActionResult> DeleteTurnamentById(DeleteTurnamentResultCommand command, CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(command, cancellationToken);
+
+        return Ok(result);
+    }
+
+    [HttpPost(nameof(AddList))]
+    [Authorize(Policy = ProjectPolicys.TurnamentResultModule.AddList)]
+    public async Task<IActionResult> AddList(AddListTurnamentResultCommand command, CancellationToken cancellationToken)
+    {
+        var result = await _mediator.Send(command, cancellationToken);
 
         return Ok(result);
     }

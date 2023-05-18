@@ -6,7 +6,7 @@ public class AddTurnamentResultCommandValidator : AbstractValidator<AddTurnament
 {
 	public AddTurnamentResultCommandValidator()
 	{
-		RuleFor(o => o.FullName);
-        RuleFor(o => o.PersonalNumber);
+		RuleFor(o => o.FullName).NotNull().NotEmpty();
+        RuleFor(o => o.PersonalNumber).NotNull().NotEmpty();
     }
 }

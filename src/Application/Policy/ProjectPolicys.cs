@@ -44,7 +44,10 @@ public static partial class ProjectPolicys
     {
         public const string Add = nameof(TurnamentResultModule) + "_" + nameof(Add);
         public const string Edit = nameof(TurnamentResultModule) + "_" + nameof(Edit);
+        public const string AddList = nameof(TurnamentResultModule) + "_" + nameof(AddList);
+        public const string DeleteAll = nameof(TurnamentResultModule) + "_" + nameof(DeleteAll);
         public const string ImportCsv = nameof(TurnamentResultModule) + "_" + nameof(ImportCsv);
+        public const string DeleteTurnamentById = nameof(TurnamentResultModule) + "_" + nameof(DeleteTurnamentById);
     }
 }
 
