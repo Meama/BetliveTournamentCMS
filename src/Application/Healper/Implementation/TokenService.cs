@@ -44,7 +44,7 @@ public class TokenService : ITokenService
         var token = tokenHandler.CreateToken(tokenDescriptor);
         var tokenString = tokenHandler.WriteToken(token);
 
-        await GenerateOnlyOneValidToken(newUser, tokenString);
+        //await GenerateOnlyOneValidToken(newUser, tokenString);
 
         return tokenString;
     }
